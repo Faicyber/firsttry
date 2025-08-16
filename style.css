@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Kristi&display=swap');
+
+/* General Body Styles */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    margin: 0;
+    background-color: #F5DEB3; /* Wheat */
+    color: #6B4226; /* Brown */
+    transition: background-color 0.5s, color 0.5s;
+    cursor: url('assets/cursor.png'), auto;
+}
+
+h1, h2, h3 {
+    font-family: 'Kristi', cursive;
+    font-weight: normal;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #6B4226; /* Dark Brown */
+    color: #F5DEB3; /* Wheat */
+}
+
+/* Header and Navigation */
+header {
+    padding: 1rem;
+    background-color: rgba(245, 222, 179, 0.8); /* Semi-transparent Wheat */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.5s;
+}
+
+body.dark-mode header {
+    background-color: rgba(107, 66, 38, 0.8); /* Semi-transparent Dark Brown */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+/* Main Content */
+main {
+    padding-top: 60px; /* Adjust based on header height */
+}
+
+/* Loader */
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #F5DEB3; /* Wheat */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+body.dark-mode #loader {
+    background: #6B4226; /* Dark Brown */
+}
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#hero canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+body.dark-mode #hero {
+    /* No background color needed */
+}
+
+/* About Section */
+#about {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+body.dark-mode #about {
+    background-color: #5a381a;
+}
+
+#about img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    border: 5px solid #F5DEB3; /* Wheat */
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+body.dark-mode #about img {
+    border-color: #6B4226; /* Dark Brown */
+}
+
+#about p {
+    max-width: 600px;
+    margin: 0 auto 1rem auto;
+    line-height: 1.6;
+}
+
+/* Hero Title Animation */
+.hero-title {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 1.5s forwards; /* 1.5s delay to start after loader */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loader Animation */
+.spinner-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.spinner {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top-color: #8B4513; /* A soft brown, like wood carving */
+    animation: spin 1.5s linear infinite;
+}
+
+.spinner:nth-child(2) {
+    border-top-color: #F5DEB3; /* A wheat color, like a cat's fur */
+    animation-delay: -0.75s;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Gallery */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(107, 66, 38, 0.1);
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: rotateY(10deg) scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card h3 {
+    margin: 1rem;
+    font-size: 1.2rem;
+}
+
+body.dark-mode .card {
+    background-color: #5a381a;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Contact Section */
+#contact {
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+}
+
+#contact-canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(245, 222, 179, 0.8); /* Semi-transparent Wheat */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(107, 66, 38, 0.1);
+}
+
+body.dark-mode #contact form {
+    background: rgba(107, 66, 38, 0.8); /* Semi-transparent Dark Brown */
+}
+
+#contact input,
+#contact textarea {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #8B4513; /* SaddleBrown */
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+body.dark-mode #contact input,
+body.dark-mode #contact textarea {
+    background-color: #5a381a;
+    border-color: #F5DEB3; /* Wheat */
+    color: #F5DEB3; /* Wheat */
+}
+
+#contact button {
+    padding: 1rem;
+    background-color: #8B4513; /* SaddleBrown */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#contact button:hover {
+    background-color: #A0522D; /* Sienna */
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 0.5rem;
+    }
+
+    nav li {
+        margin: 0 0.5rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    #about {
+        padding: 2rem 1rem;
+    }
+
+    #about img {
+        width: 150px;
+        height: 150px;
+    }
+
+    #contact form {
+        padding: 1.5rem;
+    }
+}
